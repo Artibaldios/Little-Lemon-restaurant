@@ -1,146 +1,93 @@
-import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import React, { useEffect} from 'react';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-const BookingForm = ({ submitForm }) => {
-  const initialValues = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    guests: 1,
-    date: '',
-    time: '',
-    occasion: ''
-  };
+const BookingForm = ({ submitForm, availableTimes, dispatch }) => {
 
-  const validationSchema = Yup.object().shape({
-    firstName: Yup.string().required('First Name is required'),
-    lastName: Yup.string().required('Last Name is required'),
-    email: Yup.string().email('Invalid email').required('Email is required'),
-    guests: Yup.number()
-      .typeError('Number of Guests must be a valid number')
-      .integer('Number of Guests must be an integer')
-      .min(1, 'Number of Guests must be at least 1')
-      .max(10, 'Number of Guests can be maximum 10')
-      .required('Number of Guests is required'),
-    date: Yup.date().required('Date is required'),
-    time: Yup.string().required('Time is required'),
-    occasion: Yup.string().required('Occasion is required')
+  const formik = useFormik({
+    initialValues: {
+      firstName: "",
+      email: "",
+      date: (new Date()).toLocaleDateString("en-CA"),
+      time: availableTimes.times[0],
+      guests: 1,
+      occasion: "birthday",
+    },
+    onSubmit: (values) => {
+      submitForm(values);
+    },
+    validationSchema: Yup.object({
+      firstName: Yup.string().required("Required"),
+      email: Yup.string().email("Invalid email address").required("Required"),
+      date: Yup.date().required("Date is required"),
+      time: Yup.string().oneOf(availableTimes.times).required("Time is required"),
+      guests: Yup.number().min(1, "Must be at least 1").max(10, "Must be at most 10").required("Number of guests is required"),
+      occasion: Yup.string().oneOf(["birthday", "engagement", "anniversary"]).required("Occasion is required"),
+    }),
   });
 
-  const handleSubmit = (values) => {
-    submitForm(values);
-  };
+  useEffect(() => {
+    dispatch({ type: "UPDATE_TIMES", date: new Date(formik.values.date) });
+  }, [formik.values.date]);
 
   return (
-    <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
-      <Form className="form-box">
-        <div className="form-item">
-          <label htmlFor="firstName" className="form-label">
-            First Name
+      <form onSubmit={formik.handleSubmit} >
+        <label htmlFor="firstName" className="form-label">
+            Full Name
           </label>
-          <Field
+          <input
             type="text"
             id="firstName"
             name="firstName"
+            {...formik.getFieldProps("firstName")}
           />
-          <ErrorMessage name="firstName" component="div" className="text-red-500" />
+        <div data-testid="res-date-error" className='text-red-500'>
+          {formik.touched.firstName && formik.errors.firstName}
         </div>
-
-        <div className="form-item">
-          <label htmlFor="lastName" className="block mb-2">
-            Last Name
-          </label>
-          <Field
-            type="text"
-            id="lastName"
-            name="lastName"
-          />
-          <ErrorMessage name="lastName" component="div" className="text-red-500" />
-        </div>
-
-        <div className="form-item">
-          <label htmlFor="email" className="block mb-2">
+        <label htmlFor="firstName" className="form-label">
             Email
           </label>
-          <Field
+          <input
             type="email"
             id="email"
             name="email"
+            {...formik.getFieldProps("email")}
           />
-          <ErrorMessage name="email" component="div" className="text-red-500" />
+        <div data-testid="res-date-error" className='text-red-500'>
+          {formik.touched.email && formik.errors.email}
         </div>
-
-        <div className="form-item">
-          <label htmlFor="guests" className="block mb-2">
-            Number of Guests
-          </label>
-          <Field
-            type="number"
-            id="guests"
-            name="guests"
-            min="1"
-            max="10"
-          />
-          <ErrorMessage name="guests" component="div" className="text-red-500" />
+        <label htmlFor="res-date">Choose date</label>
+        <input type="date" data-testid="res-date" id="res-date" {...formik.getFieldProps("date")} />
+        <div data-testid="res-date-error" className='text-red-500'>
+          {formik.touched.date && formik.errors.date}
         </div>
-
-        <div className="form-item">
-          <label htmlFor="date" className="block mb-2">
-            Choose Date
-          </label>
-          <Field
-            type="date"
-            id="date"
-            name="date"
-          />
-          <ErrorMessage name="date" component="div" className="text-red-500" />
+        <label htmlFor="res-time">Choose time</label>
+        <select data-testid="res-time" id="res-time" {...formik.getFieldProps("time")}>
+          {availableTimes.times.map((time) => (
+            <option key={time} value={time}>{time}</option>
+          ))}
+        </select>
+        <div data-testid="res-time-error" className='text-red-500'>
+          {formik.touched.time && formik.errors.time}
         </div>
-
-        <div className="form-item">
-          <label htmlFor="time" className="block mb-2">
-            Choose Time
-          </label>
-          <Field
-            as="select"
-            id="time"
-            name="time"
-          >
-            <option value="">Select Time</option>
-            <option value="17:00">17:00</option>
-            <option value="18:00">18:00</option>
-            <option value="19:00">19:00</option>
-            <option value="20:00">20:00</option>
-            <option value="21:00">21:00</option>
-            <option value="22:00">22:00</option>
-          </Field>
-          <ErrorMessage name="time" component="div" className="text-red-500" />
+        <label htmlFor="guests">Number of guests</label>
+        <input data-testid="guests" type="number" placeholder="1" min="1" max="10" id="guests" {...formik.getFieldProps("guests")} />
+        <div data-testid="guests-error" className='text-red-500'>
+          {formik.touched.guests && formik.errors.guests}
         </div>
-
-        <div className="form-item">
-          <label htmlFor="occasion" className="block mb-2">
-            Occasion
-          </label>
-          <Field
-            as="select"
-            id="occasion"
-            name="occasion"
-          >
-            <option value="">Select Occasion</option>
-            <option value="Birthday">Birthday</option>
-            <option value="Anniversary">Anniversary</option>
-          </Field>
-          <ErrorMessage name="occasion" component="div" className="text-red-500" />
+        <label htmlFor="occasion">Occasion</label>
+        <select data-testid="occasion" id="occasion" {...formik.getFieldProps("occasion")}>
+          <option value="birthday" className="opt">Birthday</option>
+          <option value="engagement" className="opt">Engagement</option>
+          <option value="anniversary" className="opt">Anniversary</option>
+        </select>
+        <div data-testid="occasion-error" className='text-red-500'>
+          {formik.touched.occasion && formik.errors.occasion}
         </div>
-
-        <div className="form-btn-box">
-          <button type="submit">
-            Make Your Reservation
-          </button>
+        <div className='form-btn-box'>
+          <input data-testid="submit-btn" type="submit" value="Make Your reservation" className='form-btn' />
         </div>
-      </Form>
-    </Formik>
+      </form>
   );
 };
-
 export default BookingForm;
