@@ -1,0 +1,32 @@
+.mobile-navbar {
+    margin-top: 10px;
+    color: black;
+    font-weight: 500;
+}
+
+.mobile-navbar li {
+    margin-bottom: 1em;
+    margin-left: 1em;
+    padding: 4px;
+}
+
+.mobile-navbar li:hover {
+    cursor: pointer;
+}
+.active{
+    display: block;
+}
+.mobile {
+    display: none;
+}
+.disabled {
+    display: none;
+}
+@media (max-width: 768px) {
+    .mobile {
+        display: flex;
+    }
+    .header-box{
+        display: flex;
+    }
+}

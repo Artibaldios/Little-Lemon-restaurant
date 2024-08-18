@@ -1,0 +1,16 @@
+.header-box {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px;
+}
+.logo-box{
+    height: 40px;
+    padding-top: 6px;
+}
+.navbar-box ul{
+    display: flex;
+}
+.navbar-box li{
+    margin-left: 20px;
+}

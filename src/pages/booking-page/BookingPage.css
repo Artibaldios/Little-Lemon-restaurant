@@ -1,0 +1,84 @@
+.booking-page-box {
+    background-color: #fff;
+    padding: 20px;
+}
+.booking-page-wrapper{
+    background: #face14;
+}
+.booking-page-title{
+    text-align: center;
+    padding-top: 20px;
+}
+
+.booking-page label {
+    font-weight: 600;
+}
+
+.booking-page button {
+    background-color: #ee9972;
+    border-radius: .25rem;
+}
+
+form {
+    padding: 20px;
+}
+
+label {
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+}
+.form-item{
+    padding: 10px 20px 0 10px;
+}
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus {
+    border-color: #ff4d4d;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+.text-red-500 {
+    color: #ff4d4d;
+    font-size: 14px;
+    margin-top: 4px;
+}
+.form-btn-box{
+    display: flex;
+    justify-content: center;
+}
+.form-btn-box button {
+    background-color: #495e57;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+}
+
+.form-btn-box button:hover {
+    background-color: #ff4d4d;
+}
+
+.form-btn-box button:active {
+    transform: scale(0.98);
+}

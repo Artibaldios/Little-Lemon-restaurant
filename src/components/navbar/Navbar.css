@@ -1,0 +1,28 @@
+.header-list ul {
+    display: flex;
+}
+
+.header-list ul li {
+    margin-right: 1em;
+}
+
+ul li {
+    font-weight: 600;
+    padding: 5px;
+}
+
+.navbar-box ul li:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.navbar-box ul li:first-of-type, .navbar-box ul li:nth-of-type(4){
+    background-color: #face14;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .navbar-box {
+        display: none;
+    }
+}
