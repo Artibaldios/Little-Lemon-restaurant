@@ -1,7 +1,6 @@
 
 import { render, screen } from '@testing-library/react';
 import BookingForm from "./BookingForm";
-import { submitAPI, fetchAPI, initializeTimes, updateTimes  } from "../../pages/booking-page/BookingPage";
 
 describe("BookingForm", () => {
   test("Renders labels and fields", () => {
@@ -13,7 +12,7 @@ describe("BookingForm", () => {
         dispatch={jest.fn((action) => action)}
       />
     );
-    // Date label and field
+
     const choseDateLabel = screen.getByText("Choose date");
     expect(choseDateLabel).toBeInTheDocument();
     const choseDateField = screen.getByTestId("res-date");

@@ -1,7 +1,7 @@
 import React from 'react'
-import food from '../../img/restauranfood.jpg'
 import { Link } from 'react-router-dom'
 import './Hero.css'
+import Slider from "../../components/slider/slider"
 
 const Hero = () => {
   return (
@@ -18,10 +18,7 @@ const Hero = () => {
         </p>
         <Link to='/booking'><button className='reserve-btn'>Reserve a Table</button></Link>
       </div>
-
-      <div className='hero-img-box'>
-        <img src={food} alt="Restaurant Food" />
-      </div>
+      <Slider></Slider>
     </section>
   )
 }

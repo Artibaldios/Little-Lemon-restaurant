@@ -1,10 +1,18 @@
 .booking-page-box {
     background-color: #fff;
     padding: 20px;
+    display: flex;
+    justify-content: center;
+
 }
 .booking-page-wrapper{
     background: #face14;
     padding: 15px;
+    width: 100%;
+    max-width: 1280px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
 }
 .booking-page-title{
     text-align: center;
@@ -34,8 +42,8 @@ input[type="email"],
 input[type="number"],
 input[type="date"],
 select {
-    width: 100%;
-    padding: 10px 0;
+    width: calc(100% - 20px);
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
