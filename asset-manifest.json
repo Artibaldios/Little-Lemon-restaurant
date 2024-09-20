@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/Little-Lemon-restaurant/static/css/main.9093e663.css",
+    "main.js": "/Little-Lemon-restaurant/static/js/main.2d0e88ea.js",
+    "static/media/greek salad.jpg": "/Little-Lemon-restaurant/static/media/greek salad.bed423a1fab5b210e347.jpg",
+    "static/media/restarauntfood.jpg": "/Little-Lemon-restaurant/static/media/restarauntfood.e7dffb2e444b577eff32.jpg",
+    "static/media/restarauntfood2.jpg": "/Little-Lemon-restaurant/static/media/restarauntfood2.ac25553598353bae4579.jpg",
+    "static/media/tuna.jpg": "/Little-Lemon-restaurant/static/media/tuna.bb0bac9a960393867845.jpg",
+    "static/media/bruchetta.jpg": "/Little-Lemon-restaurant/static/media/bruchetta.d3dc8ed5bdb62de7cf8f.jpg",
+    "static/media/restaurant.jpg": "/Little-Lemon-restaurant/static/media/restaurant.324d0f99bdf19400a0f7.jpg",
+    "static/media/bolognese.jpg": "/Little-Lemon-restaurant/static/media/bolognese.9a63687fe646604f3ec8.jpg",
+    "static/media/cake.jpg": "/Little-Lemon-restaurant/static/media/cake.74515f6c2ce3e423e4d5.jpg",
+    "static/media/chiken.jpg": "/Little-Lemon-restaurant/static/media/chiken.6b3b4ed0a461cc1a97ba.jpg",
+    "static/media/risotto.jpg": "/Little-Lemon-restaurant/static/media/risotto.5e2c96f253ff2ab30d53.jpg",
+    "static/media/Logo.svg": "/Little-Lemon-restaurant/static/media/Logo.6c132dfefa69396bba43f72aa595e62f.svg",
+    "index.html": "/Little-Lemon-restaurant/index.html",
+    "main.9093e663.css.map": "/Little-Lemon-restaurant/static/css/main.9093e663.css.map",
+    "main.2d0e88ea.js.map": "/Little-Lemon-restaurant/static/js/main.2d0e88ea.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9093e663.css",
+    "static/js/main.2d0e88ea.js"
+  ]
+}
